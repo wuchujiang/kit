@@ -9,20 +9,29 @@ class Home extends Component {
 		this.clickHandle = this.clickHandle.bind(this);
 	}
 
-	clickHandle() {
-		this.props.actions.add_todos();
+	clickHandle(type) {
+		if(type === 1){
+			this.props.actions.add_todos();
+		} else {
+			this.props.actions.subTract_todos();
+		}
 	}
 
 	render() {
-		return <div onClick={this.clickHandle}>add</div>	
+		return (
+			<div>
+				<button onClick={ e=>this.clickHandle(1)}>点我+1</button>
+				<button onClick={ e=>this.clickHandle(2)}>点我-1</button>				
+				<p>{this.props.home}</p>
+			</div>
+		)	
 	}
 }
 
 
 const mapStateToProps = state => {
 	return {
-		...state,
-		home: state.home
+		...state
 	}
 };
 

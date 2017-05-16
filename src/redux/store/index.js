@@ -1,5 +1,5 @@
-import {createStore,combineReducers, applyMiddleware, compose} from 'redux';
-import * as reducer from '../reducer';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import reducer from '../reducer';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
@@ -9,17 +9,16 @@ import thunk from 'redux-thunk';
 
 let store;
 
-
 //配置devtool工具
-if(!(window.__REDUX_DEVTOOLS_EXTENSION__ || window.__REDUX_DEVTOOLS_EXTENSION__)){
-    store = createStore(
-        combineReducers(reducer),
-        applyMiddleware(thunk, logger)
-    );
-}else{
+if (!(window.__REDUX_DEVTOOLS_EXTENSION__ || window.__REDUX_DEVTOOLS_EXTENSION__)) {
     store = createStore(
         reducer,
-        compose(applyMiddleware(thunk, logger),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) //插件调试，未安装会报错
+        applyMiddleware(thunk, logger)
+    );
+} else {
+    store = createStore(
+        reducer,
+        compose(applyMiddleware(thunk, logger), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()) //插件调试，未安装会报错
     );
 }
 

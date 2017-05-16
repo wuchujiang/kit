@@ -1,13 +1,20 @@
 import fetch from 'isomorphic-fetch';
 
 import {
-    ADD_TODOS
+    ADD_TODOS,
+    SUBTRACT_TODOS
 } from '../types';
 
 
 export const add_todos = () => {
     return {
         type: ADD_TODOS
+    }
+}
+
+export const subTract_todos = () => {
+    return {
+        type: SUBTRACT_TODOS
     }
 }
 
@@ -32,5 +39,3 @@ export const fetchPosts = (path, postData) => {
     }
 }
 */
-
-
