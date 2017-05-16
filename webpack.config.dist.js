@@ -13,16 +13,10 @@ var APP_FILE = path.resolve(APP_PATH, 'app'); //根目录文件app.jsx地址
 
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build/dist'); //发布文件所存放的目录/build/dist/前面加/报错？
 
-var svgDirs = [
-    require.resolve('antd-mobile').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
-    path.resolve(APP_PATH, '/Style/svg'), // 2. 自己私人的 svg 存放目录
-
-    // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 2. 自己私人的 svg 存放目录
-];
 module.exports = {
     entry: {
         app: APP_FILE,
-        common: [  //打包公共组件
+        common: [ //打包公共组件
             "react",
             'react-dom',
             'react-router',
@@ -53,23 +47,19 @@ module.exports = {
             test: /\.scss$/,
             exclude: /^node_modules$/,
             loader: ExtractTextPlugin.extract('style', ['css!postcss', 'autoprefixer', 'sass']),
-            include: [APP_PATH]
         }, {
             test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
             exclude: /^node_modules$/,
             loader: 'file-loader?name=[name].[ext]',
-            include: [APP_PATH]
         }, {
             test: /\.(png|jpg|gif)$/,
             exclude: /^node_modules$/,
             loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
             //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片
-            include: [APP_PATH]
         }, {
             test: /\.jsx$/,
             exclude: /^node_modules$/,
             loaders: ['jsx', 'babel'],
-            include: [APP_PATH]
         }]
     },
     plugins: [
@@ -78,7 +68,7 @@ module.exports = {
                 NODE_ENV: JSON.stringify('production') //定义生产环境
             }
         }),
-        new CleanWebpackPlugin([BUILD_PATH], {  //清空build目录
+        new CleanWebpackPlugin([BUILD_PATH], { //清空build目录
             root: ROOT_PATH,
             verbose: true,
             dry: false
@@ -108,12 +98,5 @@ module.exports = {
         modulesDirectories: ['node_modules', path.join(__dirname, '../node_modules')],
         extensions: ['', '.js', '.jsx', '.css', '.scss', '.json'], //后缀名自动补全
         root: [path.resolve('src'), __dirname]
-    },
-   
-    postcss: [
-        pxtorem({
-            rootValue: 100,   //px转rem
-            propWhiteList: [],
-        })
-    ]
+    }
 };

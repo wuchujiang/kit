@@ -40,7 +40,7 @@ module.exports = {
             test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
             exclude: /^node_modules$/,
             loader: 'file-loader?name=[name].[ext]',
-        },  {
+        }, {
             test: /\.(png|jpg|gif)$/,
             exclude: /^node_modules$/,
             loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
@@ -87,6 +87,4 @@ module.exports = {
         ]
 
     },
-   
-    postcss: [pxtorem({ rootValue: 100, propWhiteList: [] })]
 };

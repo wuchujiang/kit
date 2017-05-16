@@ -20,7 +20,6 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 
 app.use(require('webpack-hot-middleware')(compiler));
-
 app.use(express.static(path.join(__dirname, 'build')));
 
 //将其他路由，全部返回index.html
