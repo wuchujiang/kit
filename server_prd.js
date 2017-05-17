@@ -7,21 +7,16 @@ var app = express();
 
 
 //代理服务器
-app.use(/\/(Free|Area|UserArea|UserHotInfo|ChampionRank|GetChampionDetail|UserExtInfo|BattleSummaryInfo|CombatList|GameDetail|champion)/, proxyMiddleware({
+/*app.use(/\/(Free|Area|UserArea|UserHotInfo|ChampionRank|GetChampionDetail|UserExtInfo|BattleSummaryInfo|CombatList|GameDetail|champion)/, proxyMiddleware({
     target: 'http://lolapi.games-cube.com',
     changeOrigin: true
-}));
-
-app.use(/\/(GetAuthors|GetAuthorVideos|GetNewstVideos|GetHeroVideos|FindVideos)/, proxyMiddleware({
-    target: 'http://infoapi.games-cube.com',
-    changeOrigin: true
-}));
+}));*/
 
 
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, '/build')));
 
 //转发接口
-app.get('/getNews', function(req, res) {
+/*app.get('/getNews', function(req, res) {
     var superagent = require('superagent');
     var sreq = superagent.get(`http://qt.qq.com/php_cgi/news/php/varcache_getnews.php?id=12&page=${req.query.page}&plat=android&version=9724`);
     sreq.pipe(res);
@@ -29,7 +24,7 @@ app.get('/getNews', function(req, res) {
         //console.log(res);
     });
 });
-
+*/
 //将其他路由，全部返回index.html
 app.get('*', function(req, res) {
     res.sendFile(__dirname + '/index.html')

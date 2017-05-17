@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as HomeActions from 'src/redux/action/home';
-
+import {Title} from 'src/component';
 class Home extends Component {
 	constructor(props) {
 		super(props);
@@ -23,6 +23,7 @@ class Home extends Component {
 				<button onClick={ e=>this.clickHandle(1)}>点我+1</button>
 				<button onClick={ e=>this.clickHandle(2)}>点我-1</button>				
 				<p>{this.props.home}</p>
+				<Title title="hello" />
 			</div>
 		)	
 	}
