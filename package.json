@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node server.js --progress --profile --colors --watch -p",
     "hot": "node server_hot.js --progress --profile --colors --watch -p",
-    "dist": "webpack --config webpack.config.dist.js --progress --profile --colors --watch -p"
+    "dist": "webpack --config webpack.config.dist.js --progress --profile --colors --watch -p",
+    "lint": "eslint --ext .js* src –fix"
   },
   "repository": {
     "type": "github",
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
+    "babel-eslint": "^7.2.3",
     "babel-loader": "^6.2.8",
     "babel-plugin-import": "^1.1.1",
     "babel-plugin-lodash": "^3.2.11",
@@ -50,6 +52,12 @@
     "babel-preset-stage-0": "^6.16.0",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.23.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.1",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
